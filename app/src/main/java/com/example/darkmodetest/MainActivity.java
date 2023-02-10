@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.JsResult;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -28,12 +29,19 @@ public class MainActivity extends AppCompatActivity {
         });
         findViewById(R.id.loadJs).setOnClickListener(view -> {
             String js = AssetUtil.getFromAssets(this, "darkMode.js");
+            String finalJS="javascript:{"+js+""+"}";
             webView.evaluateJavascript(js, s -> {
                 Log.e(TAG,s);
             });
         });
         findViewById(R.id.callJs).setOnClickListener(view -> {
-            webView.evaluateJavascript(String.format(Locale.getDefault(), "javascript:myJsFunction(%s)", "\"hello\""), null);
+            webView.evaluateJavascript("javascript:setDarkMode()", new ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String s) {
+                    Log.e(TAG,"setDarkMode onReceiveValue:"+s);
+                }
+            });
+            webView.evaluateJavascript("javascript:myJsFunction(\"hello\")", null);
             webView.loadUrl("javascript: sayHi();");
             webView.loadUrl("javascript: f2();");
         });
@@ -51,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
      * webView.loadUrl("content://com.android.htmlfileprovider/sdcard/test.html");
      */
     private void initWebView(){
-//        String loadUrl="https://xw.qq.com/";
-        String loadUrl="file:///android_asset/test.html";
+        String loadUrl="https://xw.qq.com/";
+//        String loadUrl="file:///android_asset/test.html";
         webView.addJavascriptInterface(new JSRelation(this), "android");
         WebSettings settings = webView.getSettings();
         settings.setUseWideViewPort(true); // 将图片调整到适合webview的大小
