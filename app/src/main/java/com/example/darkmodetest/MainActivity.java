@@ -29,21 +29,22 @@ public class MainActivity extends AppCompatActivity {
         });
         findViewById(R.id.loadJs).setOnClickListener(view -> {
             String js = AssetUtil.getFromAssets(this, "darkMode.js");
-            String finalJS="javascript:{"+js+""+"}";
-            webView.evaluateJavascript(js, s -> {
+            String finalJS="javascript:{"+js+"}";
+            webView.evaluateJavascript("javascript:"+js, s -> {
                 Log.e(TAG,s);
             });
         });
         findViewById(R.id.callJs).setOnClickListener(view -> {
-            webView.evaluateJavascript("javascript:setDarkMode()", new ValueCallback<String>() {
-                @Override
-                public void onReceiveValue(String s) {
-                    Log.e(TAG,"setDarkMode onReceiveValue:"+s);
-                }
-            });
-            webView.evaluateJavascript("javascript:myJsFunction(\"hello\")", null);
-            webView.loadUrl("javascript: sayHi();");
-            webView.loadUrl("javascript: f2();");
+//            webView.evaluateJavascript("javascript:setDarkMode()", new ValueCallback<String>() {
+//                @Override
+//                public void onReceiveValue(String s) {
+//                    Log.e(TAG,"setDarkMode onReceiveValue:"+s);
+//                }
+//            });
+            webView.loadUrl("javascript: setDarkMode();");
+//            webView.evaluateJavascript("javascript:myJsFunction(\"hello\")", null);
+//            webView.loadUrl("javascript: sayHi();");
+//            webView.loadUrl("javascript: f2();");
         });
         initWebView();
     }

@@ -1,3 +1,4 @@
+
 function myJsFunction(data) {
     alert("myJsFunction:" + data);
 }
@@ -14,16 +15,9 @@ function f2() {
     ip1Ele.style.fontSize = "35px";
 }
 
-// start dark mode
 const NIGHT_MODE_INVERT_FILTER_CSS = "brightness(80%) invert(100%) hue-rotate(180deg)";
 
-const NIGHT_MODE_STYLESHEET =
-`html {
-  -webkit-filter: hue-rotate(180deg) invert(100%) !important;
-}
-img,video {
-  -webkit-filter: ${NIGHT_MODE_INVERT_FILTER_CSS} !important;
-}`;
+const NIGHT_MODE_STYLESHEET = `html { - webkit - filter: hue - rotate(180deg) invert(100 % ) ! important;}`;
 
 var styleElement;
 
@@ -39,12 +33,10 @@ function getStyleElement() {
     return styleElement;
 }
 
-function setDarkMode(){
-//    var styleElement = getStyleElement();
-    // Apply the NightMode CSS to the document.
-//    document.documentElement.appendChild(styleElement);
-
-    const styles = document.createElement('style')
-    styles.innerText=NIGHT_MODE_STYLESHEET
-    document.documentElement.appendChild(styles)
+function setDarkMode() {
+    const NIGHT_MODE_STYLESHEET = `html { - webkit - filter: hue - rotate(180deg) invert(100 % ) ! important;}`;
+    const styles = document.createElement('style');
+    styles.innerText = NIGHT_MODE_STYLESHEET;
+    document.documentElement.appendChild(styles);
+    alert("setDarkMode");
 }
