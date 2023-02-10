@@ -17,7 +17,7 @@ function f2() {
 
 const NIGHT_MODE_INVERT_FILTER_CSS = "brightness(80%) invert(100%) hue-rotate(180deg)";
 
-const NIGHT_MODE_STYLESHEET = `html { - webkit - filter: hue - rotate(180deg) invert(100 % ) ! important;}`;
+const NIGHT_MODE_STYLESHEET ="html {-webkit-filter: hue-rotate(180deg) invert(100%) !important;}iframe,img,video {-webkit-filter: ${NIGHT_MODE_INVERT_FILTER_CSS} !important;}";
 
 var styleElement;
 
@@ -34,9 +34,7 @@ function getStyleElement() {
 }
 
 function setDarkMode() {
-    const NIGHT_MODE_STYLESHEET = `html { - webkit - filter: hue - rotate(180deg) invert(100 % ) ! important;}`;
     const styles = document.createElement('style');
     styles.innerText = NIGHT_MODE_STYLESHEET;
     document.documentElement.appendChild(styles);
-    alert("setDarkMode");
 }
