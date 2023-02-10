@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebView</title>
+    <style type="text/css">
+        body {
+            background: #cbcc1a;
+        }
+
+        .btn {
+            line-height: 40px;
+            margin: 10px;
+            background: #cccccc;
+        }
+
+        .logo {
+            height: 100px;
+            background: aqua;
+        }
+
+    </style>
+</head>
+<body>
+<h2>WebView</h2>
+
+<div id="input1"><span class="inp1">请输入要传递的值:</span><input type="text" id="input"></div>
+<div id="btn"><span class="btn">点我</span></div>
+<div class="logo">
+
+</div>
+<script type="text/javascript">
+
+    var btnEle = document.getElementById("btn")
+    var inputEle = document.getElementById("input")
+    btnEle.addEventListener("click", function () {
+        var value = inputEle.value
+        // alert(value)
+        /*调用java代码*/
+        if (window.zyJsLuncher != null) {
+            window.zyJsLuncher.setValue(value);
+        }
+    })
+</script>
+
+</body>
+</html>
