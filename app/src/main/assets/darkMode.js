@@ -15,9 +15,18 @@ function f2() {
     ip1Ele.style.fontSize = "35px";
 }
 
-const NIGHT_MODE_INVERT_FILTER_CSS = "brightness(80%) invert(100%) hue-rotate(180deg)";
+const NIGHT_MODE_INVERT_FILTER_CSS = 'brightness(80%) invert(100%) hue-rotate(180deg)';
+const NIGHT_MODE_STYLESHEET ='html {-webkit-filter: hue-rotate(180deg) invert(100%) !important;}iframe,video {-webkit-filter: ${NIGHT_MODE_INVERT_FILTER_CSS} !important;}';
 
-const NIGHT_MODE_STYLESHEET ="html {-webkit-filter: hue-rotate(180deg) invert(100%) !important;}iframe,img,video {-webkit-filter: ${NIGHT_MODE_INVERT_FILTER_CSS} !important;}";
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    mutation.addedNodes.forEach(function(node) {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        applyInvertFilterToChildBackgroundImageElements(node);
+      }
+    });
+  });
+});
 
 var styleElement;
 
@@ -33,8 +42,33 @@ function getStyleElement() {
     return styleElement;
 }
 
+var darkCSS;
+
+function setDarkModeCSS(css){
+    darkCSS=css;
+}
+
 function setDarkMode() {
     const styles = document.createElement('style');
     styles.innerText = NIGHT_MODE_STYLESHEET;
     document.documentElement.appendChild(styles);
+    applyInvertFilterToChildBackgroundImageElements(document);
+    observer.observe(document.documentElement, {
+            childList: true,
+            subtree: true
+          });
+    alert("setDarkMode:");
 }
+
+function applyInvertFilterToChildBackgroundImageElements(parentNode) {
+  parentNode.querySelectorAll("[style*=\"background\"]").forEach(function(el) {
+    if ((el.style.backgroundImage || "").startsWith("url")) {
+      console.log(el.className);
+      applyInvertFilterToElement(el);
+    }
+  });
+}
+
+  function applyInvertFilterToElement(el) {
+    el.style.setProperty('-webkit-filter', NIGHT_MODE_INVERT_FILTER_CSS, 'important');
+  }

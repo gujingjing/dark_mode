@@ -1,0 +1,1359 @@
+/******************************************
+ *************General Settings*************
+ ******************************************/
+
+ :root {
+	--primary-font-color: #444;
+	--info-font-color: #a0a0a0;
+	--color-darker: #272c33;
+	--color-light-yellow: #ffecad;
+}
+
+/* Reset global font color so that it's changable more easily */
+.color-primary-font-color, textarea {
+	color: var(--primary-font-color);
+}
+
+.color-info-font-color {
+	color: var(--info-font-color);
+}
+
+input, select, textarea {
+	color: var(--input-text-color);
+}
+
+.error-color {
+	color: var(--rc-color-error);
+}
+
+.js-button[aria-label="Toggle Dark Mode"] {
+	transition: filter 150ms;
+}
+
+.rcx-icon--name-darkmode {
+	height: 1em;
+	font-size: 1rem !important;
+}
+
+@media (min-width: 1372px) {
+	.sidebar__toolbar-button {
+		margin: 0 3px;
+	}
+}
+
+@keyframes highlight {
+	from {
+		background-color: hsl(216, 92%, 54%);
+	}
+}
+
+/******************************************
+ ************Transition Effect*************
+ ******************************************/
+input,
+textarea,
+select,
+.color-primary-font-color,
+.color-info-font-color,
+.background-info-font-color,
+.background-transparent-darker-before::before,
+.messages-box .message .body, /* override for opacity transition */
+.rc-header__name,
+.rc-header__wrap,
+.message .reactions>li,
+.message .title .is-bot,
+.message .title .role-tag,
+.message.new-day::before,
+.code-colors,
+.hljs-selector-id,
+.hljs-selector-tag,
+.hljs-attribute,
+.hljs-keyword,
+.hljs-title,
+.hljs-doctag,
+.hljs-string,
+.hljs-type,
+.hljs-literal,
+.hljs-number,
+.hljs-tag,
+.hljs-name,
+.hljs-attr,
+.hljs-template-variable,
+.hljs-variable,
+.rc-message-box__container,
+.messages-container .footer,
+.content-background-color,
+.message.new-day::after,
+.message .reactions>li,
+.border-component-color,
+.contextual-bar__header,
+.contextual-bar__content,
+.sidebar__footer {
+	transition: opacity 300ms linear, color 150ms, background-color 150ms, border-color 150ms;
+}
+
+/******************************************
+ *************Dark Mode Settings***********
+ ******************************************/
+body.dark-mode {
+
+	/****************************** Custom Variables ******************************/
+	--primary-font-color: var(--color-gray-lightest);
+	--info-font-color: var(--color-gray-light);
+	--message-box-background: hsla(0, 0, 100%, 0.1);
+
+	--button-outline-color: var(--color-gray-medium);
+	--button-close-color: var(--color-gray-medium);
+
+	/********************** Overridden Rocket.Chat Variables **********************/
+
+	/* General Colors */
+	--rc-color-alert-message-warning-background: hsl(352, 83%, 20%);
+	--message-box-color: var(--primary-font-color);
+	--message-box-editing-color: var(--rc-color-alert-message-warning-background);
+	--rc-color-primary: var(--color-gray-lightest);
+	--rc-color-primary-lightest: var(--color-dark-medium);
+	--rcx-avatar-background-color: var(--color-darkest);
+	--rcx-color-background-light: var(--color-darkest);
+	--rcx-color-background-tint: var(--rcx-primary-dark);
+	--rcx-color-neutral-100: var(--rc-color-primary-dark);
+	--rcx-color-neutral-200: var(--rc-color-primary-dark);
+	/* --rcx-color-neutral-400: var(--rc-color-primary-dark); */
+	--rcx-color-danger-200: var(--color-dark-red);
+	--rcx-color-warning-200: var(--color-light-yellow);
+	--rcx-color-font-default: var(--primary-font-color);
+	--rcx-color-font-hint: var(--rcx-color-foreground-info);
+	--rcx-color-foreground-alternative: var(--primary-font-color); /*var(--color-darkest);*/
+	--rcx-color-foreground-default: var(--info-font-color);
+	--rcx-color-foreground-info: var(--color-gray);
+	--rcx-color-foreground-hint: var(--color-gray);
+	--rcx-color-surface-light: var(--color-darker);
+	--rcx-color-surface-tint: var(--color-darkest);
+	/* --rcx-tag-colors-disabled-color: var(--rc-color-primary-dark); */
+	--rcx-color-blue-primary: #095ad2;
+	--rcx-color-blue-primary-fade: #1a4587;
+	--rcx-color-blue-primary-light: #1d73f5;
+	/* --- */
+	--rcx-color-stroke-light: var(--color-dark-30) !important;
+	--rcx-color-stroke-extra-light: var(--color-dark-70) !important;
+
+	--rcx-tabs-hover-border-color: var(--primary-font-color);
+
+	/* Buttons */
+	--rcx-button-primary-color: var(--rc-color-primary); /* var(--color-gray-lightest) */
+	--rcx-button-primary-background-color: var(--rcx-color-blue-primary);
+	--rcx-button-primary-border-color: var(--rc-color-primary); /* var(--color-gray-lightest) */
+	--rcx-button-primary-disabled-color: var(--color-gray);
+	--rcx-button-primary-disabled-background-color: var(--color-dark);
+	/*--rcx-button-primary-disabled-background-color: #095ad2c2; // Same color, lower opacity */
+	--rcx-button-primary-disabled-border-color: var(--color-gray);
+
+	--rcx-button-secondary-color: var(--info-font-color); /* var(--color-gray-light) */
+	--rcx-button-secondary-background-color: var(--color-darkest);
+	--rcx-button-secondary-hover-background-color: var(--color-dark-medium);
+	--rcx-button-secondary-hover-border-color: var(--color-dark-medium);
+	--rcx-button-secondary-active-background-color: var(--color-darkest);
+	--rcx-button-secondary-focus-background-color: var(--color-darkest);
+
+	--rcx-button-icon-background-color: transparent;
+	--rcx-button-icon-hover-background-color: var(--color-dark-medium);
+	--rcx-button-icon-active-background-color: var(--color-darkest);
+	--rcx-button-icon-info-active-background-color: var(--color-darkest);
+
+	/* Announcements & Banners */
+	--rcx-color-announcement-text: var(--info-font-color);
+	--rcx-color-announcement-background: var(--rcx-color-blue-primary-fade);
+	--rc-color-announcement-text-hover: var(--info-font-color);
+	--rc-color-announcement-background-hover: var(--rcx-color-blue-primary);
+
+	--rcx-banner-colors-info-color: var(--rcx-color-blue-primary);
+	--rcx-banner-colors-info-color: var(--rcx-color-blue-primary-light);
+
+	/* Emojis */
+	--rcx-message-reaction-background-color: var(--rc-color-primary-dark);
+	--rcx-message-reaction-hover-background-color:  var(--color-darker);
+	--rcx-message-reaction-border-color: var(--rc-color-primary-lightest);
+	--rcx-message-reaction-hover-border-color:  var(--color-darkest);
+
+	--rcx-message-generic-preview-border-color: var(--color-darker);
+	--rcx-message-generic-preview-content-background-color: var(--color-darker);
+	--rcx-message-generic-preview-content-hover-background-color: var(--color-darkest);
+
+	/* Tags */
+	--rcx-tag-colors-default-background-color: var(--color-dark-medium);
+	--rcx-tag-colors-default-color: var(--color-gray);
+
+	/* Chat */
+	--rcx-message-background-color: var(--rc-color-primary-darkest);
+	--rcx-message-divider-background-color: var(--color-darker);
+	--rcx-message-divider-color: var(--primary-font-color);
+
+	/* Forms - Button */
+	--button-disabled-background: var(--color-dark-70);
+	--button-disabled-text-color: var(--color-dark-80);
+
+	/* Forms - Input */
+	--input-text-color: var(--color-gray-lightest);
+	--input-icon-color: var(--color-gray-lightest);
+
+	/* Forms - popup list */
+	--popup-list-background: var(--color-dark);
+	--popup-list-background-hover: var(--color-darkest);
+	--popup-list-selected-background: var(--color-dark);
+	--popup-list-name-color: var(--color-white);
+
+	/* Forms - tags */
+	--tags-text-color: var(--color-white);
+	--tags-background: var(--color-blue);
+
+	/* Sidebar */
+	--sidebar-background: var(--color-dark);
+	--sidebar-background-hover: var(--color-darkest); /* hover, focus */
+	--sidebar-background-light-hover: var(--color-darkest); /* hover, focus */
+	--sidebar-background-light-active: var(--color-dark-70);
+
+	/* Chip */
+	--chip-background: var(--color-blue);
+
+	/* Mention link */
+	--mention-link-background: var(--color-dark-medium);
+	--mention-link-text-color: var(--color-light-blue);
+	--mention-link-me-background: var(--alerts-background);
+	--mention-link-me-text-color: var(--color-white);
+	--mention-link-group-background: var(--alerts-background);
+	--mention-link-group-text-color: var(--color-white);
+
+	/* Message box */
+	--message-box-user-activity-color: var(--color-gray-lightest);
+	--message-box-user-activity-user-color: var(--color-gray-lightest);
+
+	/* Header */
+	--header-title-username-color-darker: var(--color-gray-lightest);
+	--header-background-color: var(--color-darkest);
+
+	/* Popover */
+	--popover-background: var(--color-dark);
+	--popover-background-hover: var(--color-dark-medium);
+	--popover-title-color: var(--color-white);
+	--popover-item-color: var(--color-white);
+
+	/* Tooltip */
+	--tooltip-background: var(--color-darkest);
+	--tooltip-text-color: var(--color-white);
+
+	/* Alert */
+	--alerts-background: #1d73f5;
+	--alerts-color: var(--color-white);
+
+	/* Toastbar */
+	--rcx-toastbar-error-color: var(--primary-font-color); /*--rcx-font-danger */
+}
+
+/******************************************
+ *********Manual Dark Theme Overrides******
+ ******************************************/
+
+/***************Main Chat*****************/
+
+/* Breadcrumbs discussions */
+body.dark-mode .rcx-room-header .rcx-tag--default {
+	background-color: unset;
+}
+
+/* Blockquote */
+
+body.dark-mode .rcx-css-qfztfu
+{
+	border-top-width: 0.075rem !important;
+    border-bottom-width: 0.075rem !important;
+}
+
+/*
+body.dark-mode .rcx-css-qfztfu:hover,
+body.dark-mode .rcx-css-qfztfu:focus
+{
+	background-color: var(--color-dark) !important;
+}
+*/
+
+/* Attachements content */
+body.dark-mode .rcx-message-attachment .rcx-attachment__content .rcx-box--full {
+	color: var(--primary-font-color);
+}
+
+body.dark-mode .rcx-message-attachment .rcx-attachment__content .rcx-box--full.rcx-box--with-block-elements pre code {
+	background-color: var(--color-dark);
+  	color: var(--primary-font-color);
+}
+
+/* Pinned messages content */
+body.dark-mode .rcx-css-ntpg4f {
+	color: var(--rc-color-primary) !important;
+}
+
+body.dark-mode .main-content a {
+	color: var(--color-light-blue);
+}
+
+body.dark-mode .main-content .messages-box .wrapper {
+	background-color: var(--color-darkest);
+}
+
+body.dark-mode .mention-link--group {
+	color: var(--mention-link-group-text-color) !important;
+}
+
+body.dark-mode .mention-link--me {
+	color: var(--mention-link-me-text-color) !important;
+}
+
+body.dark-mode select {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode select option {
+	color: var(--color-white);
+}
+
+body.dark-mode .sidebar-item > a {
+	color: inherit;
+}
+
+body.dark-mode .highlight-text {
+    background-color: var(--color-blue);
+}
+
+body.dark-mode .rc-switch__text {
+	color: var(--color-white);
+}
+
+body.dark-mode .rc-switch-double {
+	color: var(--color-white);
+}
+
+body.dark-mode .rc-switch__button {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .error-border {
+	border-color: var(--rc-color-alert-message-warning-background);
+}
+
+body.dark-mode .background-component-color {
+	background-color: var(--color-dark-blue);
+}
+
+body.dark-mode .upload-progress-progress {
+	background-color: var(--color-blue);
+}
+
+body.dark-mode .container-bars .color-primary-action-color {
+	color: var(--color-white);
+}
+
+body.dark-mode .burger i {
+	background-color: var(--color-white);
+}
+
+body.dark-mode .rc-member-list__user.active,
+body.dark-mode .rc-member-list__user:hover {
+	background-color: var(--color-darkest);
+}
+
+body.dark-mode .rc-user-info-details {
+	background-color: var(--color-dark-medium);
+}
+
+body.dark-mode p.rc-user-info-details__info {
+	color: var(--color-white);
+}
+
+body.dark-mode .messages-container .footer,
+body.dark-mode .content-background-color {
+	background-color: var(--header-background-color);
+}
+
+/* Chat messages separator (main chat) */
+
+body.dark-mode .rcx-message-divider__wrapper {
+    background-color: var(--rc-color-primary-dark);
+}
+
+/* Chat system messages */
+
+/* "Beginning of conversation" */
+body.dark-mode .rcx-css-wtiuha {
+	color: var(--rc-color-primary-light-medium) !important;
+}
+
+/* User joined channel, roles updates, etc */
+body.dark-mode .rcx-message-system__name {
+	color: var(--rc-color-primary-light) !important;
+}
+
+/* "You joined a new private conversation with" */
+body.dark-mode .rcx-css-oyadl9 {
+	color: var(--rc-color-primary-light) !important;
+}
+
+/* Chat messages */
+
+body.dark-mode .rcx-message {
+	background-color: var(--color-darkest);
+}
+
+body.dark-mode .message.active, /* old name (threads) */
+body.dark-mode .message:hover, /* old name (threads) */
+body.dark-mode .rcx-message.active, /* new name (main chat) */
+body.dark-mode .rcx-message:hover { /* new name (main chat) */
+    background-color: var(--color-darker);
+}
+
+/*
+body.dark-mode .rcx-message .first-unread .body:after {
+	background-color: var(--header-background-color);
+}
+*/
+
+/* Fix for room tag */
+body.dark-mode .rcx-css-17cb7q7,
+body.dark-mode .rcx-css-rc5ipl {
+	color: var(--rcx-tag-colors-default-color) !important;
+}
+
+body.dark-mode .rcx-message-body,
+body.dark-mode .rcx-message-thread__message,
+body.dark-mode .rcx-message-header__name {
+	color: var(--primary-font-color);
+}
+
+body.dark-mode .message .reactions>li,
+body.dark-mode .border-component-color,
+body.dark-mode .message.new-day::after { /* Chat messages separator (threads) */
+	border-color: var(--rc-color-primary-lightest);
+}
+
+body.dark-mode .message .reactions>li,
+body.dark-mode .message .title .is-bot,
+body.dark-mode .message .title .role-tag,
+body.dark-mode .message.new-day::before { /* Chat messages separator (threads) */
+	background-color: var(--rc-color-primary-dark);
+}
+
+body.dark-mode .rcx-message--editing {
+	/* RGB value for var(--color-dark-blue) */
+	background-color: rgba(23,92,196, 0.5) !important;
+}
+
+body.dark-mode .rc-message-box__container {
+	background-color: var(--message-box-background);
+}
+
+body.dark-mode .rc-old .rc-message-box .reply-preview {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .message-actions, /* threads */
+body.dark-mode .rcx-message-toolbox, /* main chat */
+body.dark-mode .rc-member-list__counter {
+	color: var(--color-gray-light);
+	background-color: var(--color-darkest);
+	border-color: var(--color-dark);
+}
+
+body.dark-mode .message-actions__button:hover, /* threads */
+body.dark-mode .message-actions__menu:hover /* threads */
+body.dark-mode .rcx-message-toolbox .rcx-button--square:hover { /* main chat */
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .message .body > table thead tr {
+    background-color: var(--color-darkest);
+}
+
+body.dark-mode .message .body > table tr {
+    background-color: var(--color-dark-medium);
+}
+
+body.dark-mode .message .body > table tr:nth-child(2n) {
+    background-color: var(--color-dark);
+}
+
+body.dark-mode .background-transparent-darker-before::before {
+	background-color: var(--color-dark-medium);
+}
+
+/* User card */
+body.dark-mode .rcx-user-card {
+	background-color: var(--color-dark) !important;
+}
+
+body.dark-mode .rcx-user-card .rcx-button:not(.rcx-css-ue04py) {
+    background-color: var(--color-dark-medium);
+    border: none;
+}
+
+body.dark-mode .rcx-user-card .rcx-button:hover {
+    background-color: var(--color-dark-light);
+    border: none;
+}
+
+/* Modals */
+
+body.dark-mode .rcx-modal__header .rcx-button--ghost.rcx-button:hover {
+	color: var(--rc-color-primary-lightest);
+}
+
+/*body.dark-mode .background-info-font-color {
+	background-color: var(--color-dark-medium);
+}*/
+
+body.dark-mode .rcx-modal__inner,
+body.dark-mode .rcx-modal__footer {
+	background: var(--color-dark);
+}
+
+body.dark-mode .rc-modal__footer,
+body.dark-mode .rc-modal {
+	background: var(--color-darkest);
+}
+
+body.dark-mode .rc-modal__content,
+body.dark-mode .rc-modal__header,
+body.dark-mode .rcx-modal__content,
+body.dark-mode .rcx-modal__inner,
+body.dark-mode .rcx-modal__header,
+body.dark-mode .rcx-modal__title {
+	color: var(--color-white);
+}
+
+body.dark-mode .rc-button--outline {
+	border-color: var(--button-outline-color);
+	color: var(--button-outline-color);
+}
+
+body.dark-mode .rc-button--outline.js-close,
+body.dark-mode .rc-button--nude.js-close {
+	border-color: var(--button-close-color);
+	color: var(--button-close-color);
+}
+
+body.dark-mode .rc-button--cancel,
+body.dark-mode .rc-button--danger {
+	background-color: var(--button-cancel-color);
+	border-color: var(--button-cancel-color);
+	color: var(--button-primary-text-color);
+}
+
+body.dark-mode .contextual-bar {
+	background-color: var(--color-dark);
+	border-left: 2px solid var(--color-dark-medium);
+}
+
+body.dark-mode .contextual-bar__header {
+	background-color: var(--color-dark);
+	border-bottom: 1px solid var(--color-dark-medium);
+}
+
+body.dark-mode .contextual-bar__content {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .rc-member-list__counter {
+	background-color: var(--color-dark);
+}
+
+/* Modal : message info (read by) */
+body.dark-mode .rcx-css-bcrfr1:hover {
+	background-color: var(--rcx-color-neutral-100);
+}
+
+/**** Select / Dropdowns ****/
+
+body.dark-mode .rcx-select {
+    background-color: var(--rc-color-primary-darkest) !important;
+}
+
+body.dark-mode .rcx-options > .rcx-tile {
+    background-color: var(--rc-color-primary-darkest) !important;
+}
+
+body.dark-mode .rcx-options .rcx-option,
+body.dark-mode .rcx-options .rcx-option--focus /* Temporary fix while focus is not refreshed */ {
+	background-color: var(--rc-color-primary-darkest) !important;
+	color: var(--color-white) !important;
+}
+
+body.dark-mode .rc-scrollbars-view .rcx-option .rcx-option__wrapper {
+	color: var(--color-white) !important;
+}
+
+body.dark-mode .rc-scrollbars-view .rcx-option:hover {
+	background-color: var(--color-darker) !important;
+}
+
+body.dark-mode .rc-popover__content .rcx-option:hover,
+/* body.dark-mode .rcx-options .rcx-option--focus, */ /* Temporary fix while focus is not refreshed */
+body.dark-mode .rcx-options .rcx-option--selected {
+    background-color: var(--color-dark-light) !important;
+}
+
+body.dark-mode .rcx-options .rcx-option:hover,
+body.dark-mode .rcx-options .rcx-option--selected:hover {
+	background-color: var(--color-dark) !important;
+}
+
+/***** Buttons *****/
+
+/* Default style for buttons */
+
+body.dark-mode .main-content .rcx-button:is(.rcx-button--icon) {
+	border-color: transparent !important;
+}
+
+/* Same style, for unusual buttons/icons/etc */
+/* ----------------------------------------- */
+/*	|	CSS rule					|	Location		|	Description					|
+	|-------------------------------|-------------------|-------------------------------|
+	|	.message-actions__menu-icon	|	Right sidebar	|	Message actions menu items	|
+	|	...							|	...				|	...							|
+*/
+
+body.dark-mode .message-actions__menu-icon {
+	background-color: var(--color-darkest) !important;
+}
+body.dark-mode .message-actions__menu:hover,
+body.dark-mode .message-actions__menu-icon:hover,
+body.dark-mode .message-actions__menu-icon:focus {
+	background-color: var(--color-dark) !important;
+	border-color: transparent !important;
+}
+
+/* Inverted style, for buttons on dark backgrounds */
+/* ----------------------------------------------- */
+/*	|	CSS rule			|	Location		|	Description						|
+	|-----------------------|-------------------|-----------------------------------|
+	|	.rcx-css-1bmadou	|	Right sidebar	|	Top right action buttons		|
+	|	.rcx-css-10ij0kz	|	Admin panel		|	Top left close button (X)		|
+	|	...					|	...				|	...								|
+*/
+
+body.dark-mode .rcx-css-10ij0kz .rcx-button,
+body.dark-mode .rcx-css-1bmadou .rcx-button {
+	background-color: var(--color-dark) !important;
+}
+body.dark-mode .rcx-css-10ij0kz .rcx-button:hover,
+body.dark-mode .rcx-css-1bmadou .rcx-button:hover,
+body.dark-mode .rcx-css-1bmadou .rcx-button:focus {
+	background-color: var(--color-darkest) !important;
+	border-color: transparent !important;
+}
+
+/* Menu buttons on top right (threads, search, etc.) */
+
+body.dark-mode .rcx-css-15vvv6z:hover,
+body.dark-mode .rcx-css-ue04py:not(.rcx-tabs):hover, /* TODO REMOVE ? */
+body.dark-mode .rcx-css-15vvv6z:active,
+body.dark-mode .rcx-css-ue04py:not(.rcx-tabs):active /* TODO REMOVE ? */ {
+    border-color: var(--color-dark-medium) !important;
+    background-color: var(--color-dark-medium) !important;
+}
+
+body.dark-mode .rcx-css-136xdpx {
+	background-color: var(--color-darkest);
+}
+
+body.dark-mode .rcx-button--ghost:not(.rcx-button--square):hover {
+	color: var(--color-dark) !important;
+}
+
+body.dark-mode .rcx-button--secondary {
+	color: var(--primary-font-color);
+}
+
+/*
+body.dark-mode .rcx-button--danger {
+	color: var(--rcx-button-colors-secondary-danger-color,var(--rcx-color-danger-500,#f5455c));
+}
+*/
+
+/***** Left sidebar *****/
+
+/* Popover menus - Top left buttons (.rcx-css-bcgm2b) */
+/* .rcx-box.rcx-box--full.rcx-tile--elevation-2.rcx-tile */
+
+body.dark-mode .rcx-css-bcgm2b.rcx-tile {
+	background-color: var(--color-dark-medium);
+	color: var(--primary-font-color);
+}
+
+body.dark-mode .rcx-css-bcgm2b .rcx-option__title,
+body.dark-mode .rcx-css-bcgm2b .rcx-option {
+	color: var(--primary-font-color);
+}
+
+body.dark-mode .rcx-css-bcgm2b .rcx-option:hover {
+    background-color: var(--color-dark-light);
+}
+
+/***** Right sidebar *****/
+
+/* TODO : switch toggle */
+
+/***** Chat thread list *****/
+
+body.dark-mode .rcx-vertical-bar {
+	background-color: var(--rc-color-primary-background) !important;
+}
+
+body.dark-mode .rcx-css-jve35a > .rcx-message,
+body.dark-mode .rcx-css-jve35a {
+	background-color: var(--color-darkest);
+}
+
+body.dark-mode .rcx-css-jve35a:hover > .rcx-message,
+body.dark-mode .rcx-css-jve35a:hover {
+	background-color: var(--color-dark-medium);
+}
+
+body.dark-mode .rcx-message-metrics__item-label {
+	color: var(--color-gray-light);
+}
+
+/* Targets unread message indicator in threads panel. */
+body.dark-mode button.rcx-contextual-message__follow + div.rcx-box--full {
+    background-color: #1d74f5 !important;
+}
+
+/***** Chat file list *****/
+
+body.dark-mode .rcx-css-18t0quo {
+	background-color: var(--color-darkest);
+}
+
+body.dark-mode .rcx-css-18t0quo:hover {
+	background-color: var(--color-dark-medium);
+}
+
+body.dark-mode .attachments__item:hover, .attachments__item:active {
+	background-color: var(--color-darkest);
+}
+
+body.dark-mode .attachments__content:hover, .attachments__content:active {
+	color: var(--primary-font-color);
+}
+
+body.dark-mode .attachments__name {
+	color: var(--color-blue);
+}
+
+body.dark-mode .attachments__name:hover, .attachments__name:active {
+	color: var(--color-light-blue);
+}
+
+/* Popover menus - Chat messages buttons (message-action-menu-options) */
+/* rcx-box rcx-box--full rcx-tile--elevation-2 rcx-tile  rcx-button-group__item rcx-css-2lacg2 */
+
+body.dark-mode .rcx-button-group__item.rcx-css-2lacg2, /* main chat */
+body.dark-mode .rc-popover__item:hover { /* threads */
+	background-color: var(--popover-background-hover);
+}
+
+body.dark-mode .rcx-button-group__item.rcx-css-2lacg2, /* main chat */
+body.dark-mode .rc-popover__content { /* threads */
+	background-color: var(--popover-background);
+	box-shadow: 0px 0px 2px var(--color-dark-20);
+}
+
+body.dark-mode .rcx-css-2lacg2 .rcx-option:not(.rcx-option--danger) {
+	color: var(--primary-font-color);
+}
+
+body.dark-mode .rcx-css-2lacg2 .rcx-option.rcx-option--danger {
+	color: var(--rc-color-error);
+}
+
+/* --- */
+
+body.dark-mode .rcx-message-reactions__reaction {
+	border-color: var(--rc-color-primary-dark);
+}
+
+body.dark-mode .emoji-picker .filter-item.active {
+	border-color: var(--color-light-blue);
+}
+
+body.dark-mode .emoji-picker .emoji-picker-item:hover {
+    background-color: var(--color-dark-70) !important;
+}
+
+body.dark-mode .rcx-room-header hr.rcx-divider {
+    border-color: var(--color-dark-medium);
+}
+
+body.dark-mode aside.rcx-box.rcx-box--full.rcx-vertical-bar,    /* right aside (threads, search, etc.) */
+body.dark-mode .rcx-css-ccvr3m,                                 /* thread list message */
+body.dark-mode .rcx-css-1j3nsmc,                                /* thread list message */
+body.dark-mode .rcx-css-1bmadou,                                /* thread list header */
+body.dark-mode .rcx-css-1yhzjdg                                 /* thread list search bar */
+{
+	border-color: var(--color-dark-medium) !important;
+}
+
+body.dark-mode .room-leader:hover {
+	background-color: var(--color-darkest);
+}
+
+body.dark-mode .chat-now {
+	color: var(--color-white);
+}
+
+body.dark-mode .message-popup-title {
+	background-color: var(--color-dark);
+}
+
+/**************Code Highlights*****************/
+
+body.dark-mode .code-colors,
+body.dark-mode .rc-old code.inline {
+	background: var(--color-dark-100);
+	color: var(--color-gray-light);
+}
+
+body.dark-mode .hljs-selector-id,
+body.dark-mode .hljs-keyword {
+	color: var(--color-light-blue);
+}
+
+body.dark-mode .hljs-title {
+	color: var(--color-gray-light);
+}
+
+body.dark-mode .hljs-literal,
+body.dark-mode .hljs-number,
+body.dark-mode .hljs-attr,
+body.dark-mode .hljs-template-variable,
+body.dark-mode .hljs-variable {
+	color: var(--color-dark-green);
+}
+
+body.dark-mode .hljs-tag,
+body.dark-mode .hljs-name {
+	color: var(--color-light-blue);
+}
+
+body.dark-mode .hljs-selector-tag,
+body.dark-mode .hljs-subst {
+	color: var(--color-green);
+}
+
+body.dark-mode .hljs-doctag,
+body.dark-mode .hljs-string {
+	color: var(--color-red);
+}
+
+body.dark-mode .hljs-attribute,
+body.dark-mode .hljs-type,
+body.dark-mode .hljs-number {
+	color: var(--color-orange);
+}
+
+body.dark-mode .hljs-addition {
+  background-color: #1e3a21;
+}
+body.dark-mode .hljs-deletion {
+  background-color: #472d2e;
+}
+
+/***** My Account *****/
+
+body.dark-mode .rc-form-legend,
+body.dark-mode .rc-form-label {
+	color: var(--primary-font-color);
+}
+
+body.dark-mode .js-logout {
+	color: var(--primary-font-color);
+	border-color: var(--primary-font-color);
+}
+
+/* Security - 2FA */
+body.dark-mode .rcx-css-9zx50y, body.dark-mode .rcx-css-zl15hy {
+	background-color: transparent !important;
+}
+
+/***** Omnichannel *****/
+
+body.dark-mode .rcx-css-110cgdy {
+	background-color: transparent !important;
+}
+
+/************** All panels ******************/
+
+/*body.dark-mode .simplebar-content > .rcx-box => will also modify sidebar background */
+body.dark-mode .simplebar-content > .rcx-css-fr02gd { /* main content */
+    background-color: var(--color-dark);
+}
+
+.page-list a:not(.rc-button), .page-settings a:not(.rc-button) {
+	color: var(--primary-font-color);
+}
+
+body.dark-mode .rc-scrollbars-container { /* Panels sidebar */
+    background-color: var(--sidebar-background);
+}
+
+body.dark-mode .rcx-css-15hfnte {  /* Panels sidebar header */
+    background-color: var(--color-dark);
+}
+
+body.dark-mode .rcx-css-10ij0kz .rcx-box { /* Panels sidebar header text and button (with cross icon) */
+    color: var(--primary-font-color) !important;
+}
+
+/************** Account panel ******************/
+
+body.dark-mode .rcx-css-txktj6 { /* Account settings page background */
+    background-color: var(--color-dark) !important;
+}
+
+body.dark-mode .rcx-css-1wm5na { /* Account settings page header title */
+	color: var(--primary-font-color) !important;
+}
+
+/************** New 5.1.0 homepage and Settings grid **************/
+
+body.dark-mode div.rcx-box.rcx-box--full div.rcx-css-kmnwgn { /* Change background color of new grid items */
+	background-color: var(--color-darker) !important;
+}
+
+/************** New elements in 5.2.0 workspace **************/
+
+body.dark-mode .rcx-css-1b9c1bt,
+body.dark-mode .rcx-css-7x60rj,
+body.dark-mode .rcx-css-1xjqm16,
+body.dark-mode .rcx-css-u1rlsz {
+	background-color: var(--color-dark) !important;
+}
+
+/************** Admin panel ******************/
+
+/* Admin panel page items (deployment-card) */
+body.dark-mode .rcx-css-10nb3ed {
+    background-color: var(--color-darkest) !important;
+}
+
+body.dark-mode .rcx-css-12tgzar, /* Users */
+body.dark-mode .rcx-css-1k9p36u,
+body.dark-mode .rcx-css-11ki28k { /* Connectivity services */
+	color: var(--primary-font-color) !important;
+}
+
+body.dark-mode .rcx-css-1of9j10 { /* Settings */
+	background-color: var(--color-darker) !important;
+}
+body.dark-mode .rcx-css-1rcvyx, /* Settings Header */
+body.dark-mode .rcx-css-1e1zwn9 {
+    background-color: var(--color-dark);
+}
+
+body.dark-mode .rcx-css-kyq2rf { /* Info & stats (Deployment, License, Usage) */
+	background-color: var(--color-dark) !important;
+}
+
+body.dark-mode .rcx-css-61di5s { /* Info & stats (Deployment, License, Usage) */
+	color: var(--color-gray) !important;
+}
+
+body.dark-mode .rcx-pagination__link:disabled { /* Admin panel pagination (e.g., in App Marketplace) */
+	color: var(--color-white);
+}
+
+body.dark-mode .rcx-select__item {
+	color: var(--primary-font-color) !important;
+}
+
+body.dark-mode .sidebar-flex__header {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .sidebar-light {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .rcx-accordion-item__bar .rcx-accordion-item__title,
+body.dark-mode .rcx-accordion-item__bar .rcx-chevron,
+body.dark-mode .rcx-label__text,
+body.dark-mode .rcx-field__label{
+	color: var(--primary-font-color)
+}
+
+body.dark-mode .sidebar-flex__search .rc-input__element {
+	color: var(--color-dark);
+}
+
+body.dark-mode .rcx-input-box__wrapper {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .rcx-box * .rcx-input-box {
+	background-color: var(--color-dark);
+	color: var(--rc-color-primary);
+}
+
+/* .rcx-autocomplete, .rcx-input-box:not(.rcx-input-box--undecorated), .rcx-input-box__wrapper, .rcx-select */
+body.dark-mode .rcx-autocomplete {
+	background-color: transparent;
+}
+
+body.dark-mode .rcx-table__cell {
+	color: var(--color-gray) !important;
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .rcx-table__cell--header {
+	color: var(--color-gray-lightest) !important;
+}
+
+body.dark-mode .rcx-table__cell--align-end {
+	color: var(--color-gray);
+	background-color: var(--color-gray);
+}
+
+body.dark-mode .rcx-css-18up6l1,
+body.dark-mode .rcx-css-zvbm6,
+body.dark-mode .rcx-css-n6qrb5 { /* Table cells content text*/
+	color: var(--primary-font-color) !important;
+}
+
+body.dark-mode .rc-input__element:disabled{
+	background-color: var(--color-gray);
+}
+
+body.dark-mode .admin-table-row {
+	background-color: hsl(219, 16%, 25%);
+}
+
+body.dark-mode .sidebar-light .sidebar-item {
+	color: inherit;
+}
+
+body.dark-mode .admin-table-row:nth-child(even) {
+	background-color: hsl(219, 15%, 33%);
+}
+
+body.dark-mode .permissions-manager .permission-grid .id-styler {
+	color: var(--info-font-color);
+}
+
+body.dark-mode .rcx-accordion-item__bar:hover {
+	background-color: var(--color-darkest);
+}
+
+body.dark-mode .rcx-box--text-style-h1,
+body.dark-mode .rcx-subtitle,
+body.dark-mode .rcx-box--text-color-default,
+body.dark-mode .rcx-box--text-color-info {
+	color: var(--color-gray-lightest);
+}
+
+body.dark-mode .permissions-manager .permission-grid .role-name {
+	background: var(--color-dark);
+}
+
+body.dark-mode .rc-apps-marketplace .rc-table-content tbody .rc-table-tr:not(.table-no-click):not(.table-no-pointer):hover,
+body.dark-mode .rc-apps-section .rc-table-content tbody .rc-table-tr:not(.table-no-click):not(.table-no-pointer):hover {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .rc-apps-marketplace .rc-table-content .rc-table-info .rc-apps-categories .rc-apps-category,
+body.dark-mode .rc-apps-section .rc-table-content .rc-table-info .rc-apps-categories .rc-apps-category {
+	color: var(--primary-font-color);
+	background-color: var(--color-dark-medium);
+}
+
+/*body.dark-mode .rcx-box * .rcx-input-box,*/
+body.dark-mode .rcx-box * .rcx-select {
+	/*color: var(--color-dark-medium);*/
+	background-color: var(--color-white);
+}
+
+body.dark-mode .rcx-banner {
+	background-color: var(--color-dark-medium);
+	color: var(--info-font-color) !important;
+}
+
+body.dark-mode .rcx-banner__close-button .rcx-button:hover {
+    background-color: var(--color-dark-light);
+    border: none;
+}
+
+body.dark-mode .mail-messages__instructions {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .rcx-tag--secondary {
+	background-color: var(--color-dark-medium);
+}
+
+body.dark-mode .rcx-table__cell--align-end {
+	color: var(--info-font-color) !important;
+	background-color: var(--color-dark-medium) !important;
+}
+
+/* body.dark-mode .main-content .rcx-box {
+    color: var(--info-font-color) !important;
+	background-color: var(--color-dark) !important;
+} */
+
+/* body.dark-mode .rcx-modal__backdrop {
+	background-color: transparent !important;
+} */
+
+body.dark-mode .rcx-table__cell--align-start {
+	color: var(--info-font-color) !important;
+  	background-color: var(--color-dark-medium) !important;
+}
+
+body.dark-mode  .rcx-field__description code {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .table-fake-th {
+	color: var(--info-font-color);
+}
+
+body.dark-mode .rc-input__element {
+	background-color: var(--color-dark-medium);
+	color: var(--info-font-color) !important;
+}
+
+body.dark-mode .rcx-check-box.is-focused,
+body.dark-mode .rcx-check-box__input:checked+.rcx-check-box__fake,
+body.dark-mode .rcx-check-box.is-focused,
+body.dark-mode .rcx-check-box__input:indeterminate+.rcx-check-box__fake,
+body.dark-mode .rcx-check-box__input:checked:focus+.rcx-check-box__fake,
+body.dark-mode .rcx-check-box__input:indeterminate:focus+.rcx-check-box__fake,
+body.dark-mode .rcx-radio-button.is-focused
+body.dark-mode .rcx-radio-button__input:checked+.rcx-radio-button__fake,
+body.dark-mode .rcx-radio-button__input:checked:focus+.rcx-radio-button__fake,
+body.dark-mode .rcx-toggle-switch.is-focused
+body.dark-mode .rcx-toggle-switch__input:checked+.rcx-toggle-switch__fake,
+body.dark-mode .rcx-toggle-switch__input:checked:focus+.rcx-toggle-switch__fake {
+	background-color: #1d74f5 !important;
+}
+
+body.dark-mode .CodeMirror {
+	background-color: var(--color-gray-light);
+}
+
+body.dark-mode .CodeMirror-gutter {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .setting-action {
+	border: var(--button-border-width) solid var(--info-font-color);
+	color: var(--info-font-color);
+}
+
+
+/**************Login Page******************/
+
+body.dark-mode main#rocket-chat {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode section.full-page.color-tertiary-font-color {
+	background-color: var(--color-dark);
+}
+
+body.dark-mode .rc-button.rc-button--nude.forgot-password,
+body.dark-mode .rc-button.rc-button--nude.back-to-login,
+body.dark-mode .rc-button.rc-button--nude.register,
+body.dark-mode .rc-button.rc-button--nude i.icon-cancel,
+body.dark-mode .register-link-replacement {
+	color: var(--color-white);
+}
+
+body.dark-mode #login-card {
+	background-color: var(--color-darkest);
+}
+
+
+/**************Scrollbars******************/
+body.dark-mode .main-content *::-webkit-scrollbar {
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .main-content  *::-webkit-scrollbar-thumb {
+	background-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .main-content  *::-webkit-scrollbar-corner {
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+
+/***** Apps (formerly Marketplace) (5.1+) *****/
+body.dark-mode .rcx-css-2eycu6,
+body.dark-mode .rcx-css-15czep1,
+body.dark-mode .rcx-css-1njby22,
+body.dark-mode .rcx-css-1kf73wc,
+body.dark-mode .rcx-css-1aw2eor,
+body.dark-mode .rcx-css-1ftswnq,
+body.dark-mode .rcx-css-1e1zwn9,
+body.dark-mode .rcx-css-3fb0q8,
+body.dark-mode .rcx-css-qc92uu > div.rcx-tabs,
+body.dark-mode .rcx-css-1cw3bhe,
+body.dark-mode .rcx-css-km4mut,
+body.dark-mode .rcx-css-1e2at5j {
+	background-color: var(--color-dark) !important;
+}
+body.dark-mode .rcx-css-11j9j9r,
+body.dark-mode .rcx-css-o9zzso {
+	background-color: var(--color-darker) !important;
+}
+body.dark-mode .rcx-css-1mu6dlv,
+body.dark-mode .rcx-css-1pjqz2k,
+body.dark-mode .rcx-css-358xm4,
+body.dark-mode .rcx-css-1pjqz2k {
+	background-color: var(--color-darkest) !important;
+}
+body.dark-mode .rcx-css-m9e8zc,
+body.dark-mode .rcx-css-1vtn02s,
+body.dark-mode .rcx-option__content,
+body.dark-mode .rcx-css-19z81xy {
+	color: var(--primary-font-color) !important;
+}
+body.dark-mode .rcx-css-1h8icge,
+body.dark-mode .rcx-css-1cw3bhe > nav.rcx.pagination {
+	/* Note: Rocket.Chat is not CSS3 compliant here. */
+	border-block-start: var(--color-darker) !important;
+}
+body.dark-mode .rcx-css-trljwa {
+	color: var(--rcx-color-foreground-hint, #9ea2a8) !important;
+}
+/* list items */
+body.dark-mode .rcx-css-svin96:hover,
+body.dark-mode .rcx-css-svin96:focus {
+	background-color: var(--color-darker) !important;
+}
+/* category selection */
+body.dark-mode .rcx-css-w9r7qg {
+	background-color: var(--color-darkest) !important;
+}
+body.dark-mode .rcx-css-8rwzkt {
+	color: var(--primary-font-color) !important;
+}
+
+/***** Jitsi App *****/
+body.dark-mode .rcx-css-5cjxzz {
+	background-color: var(--color-dark) !important;
+}
+
+/***** Poll App *****/
+body.dark-mode .rcx-css-erwtrf {
+	color: var(--primary-font-color) !important;
+}
+
+/* Style the browser scroll bars to avoid visually clashing with the rest of Rocket.Chat in dark mode. */
+
+/*
+body.dark-mode * {
+	scrollbar-color: #777 transparent;
+}
+*/
+
+body.dark-mode *::-webkit-scrollbar {
+	width: .75rem;
+}
+
+body.dark-mode *::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+body.dark-mode *::-webkit-scrollbar-thumb {
+	background-color: #777;
+}
+
+/* Firefox does the dimming on hover automatically. We emulate it for Webkit-based browsers. */
+body.dark-mode *::-webkit-scrollbar-thumb:hover {
+	background-color: #666;
+}
+
+body.dark-mode *::-webkit-scrollbar-thumb:active {
+	background-color: #444;
+}
+
+/***** Changes for 3.9.1 *****/
+
+/* aside.sidebar--main .rcx-sidebar-topbar .rcx-button--small-square {
+    width: 1.35rem;
+}
+
+body.dark-mode .main-content .rcx-box {
+    color: var(--info-font-color) !important;
+	background-color: var(--color-darkest) !important;
+}
+
+body.dark-mode div[class*="user-card"] {
+    color: var(--info-font-color) !important;
+    background-color: var(--color-dark) !important;
+}
+
+body.dark-mode .rcx-box {
+    color: var(--info-font-color) !important;
+    background-color: var(--color-dark-medium);
+}
+
+body.dark-mode .rcx-status-bullet--online {
+  background: #2de0a5 !important;
+}
+
+body.dark-mode .rcx-box--full {
+    background-color: var(--color-dark);
+}
+
+body.dark-mode .rc-box.rcx-box--full.rcx-sidebar-item__title,
+body.dark-mode .rc-box.rcx-box--full.rcx-sidebar-item__subtitle,
+body.dark-mode .rc-box.rcx-box--full.rcx-sidebar-item__time {
+	color: var(--sidebar-item-text-color);
+}
+
+body.dark-mode .rcx-sidebar-topbar button.rcx-button-group__item .rcx-icon,
+body.dark-mode .rcx-box.rcx-box--full.rcx-icon--name-hashtag,
+body.dark-mode .rcx-box.rcx-box--full.rcx-sidebar-title {
+	color: var(--sidebar-item-text-color) !important;
+}
+
+body.dark-mode .rcx-sidebar-item--highlighted {
+	color: #fff !important;
+}
+
+body.dark-mode .rcx-sidebar-item__container span.rcx-box.rcx-box--full.rcx-badge {
+	background-color: var(--rc-color-alert);
+} */
+
+body.dark-mode figcaption.rcx-box.rcx-box--full.rcx-attachment__details {
+	background-color: var(--color-darker) !important;
+	color: var(--primary-font-color) !important;
+}
+
+body.dark-mode .rcx-css-z2kk2c {
+	color: var(--primary-font-color) !important;
+}
+
+body.dark-mode .rcx-box--with-inline-elements code, .rcx-field__description code, .rcx-field__error code, .rcx-field__hint code{
+	background-color: var(--color-dark-100) !important;
+	color: var(--primary-font-color) !important;
+}
+
+/* "Free edition" in left sidebar */
+div.rcx-css-1dumbvr {
+	color: var(--info-font-color) !important;
+}
+
+/* This CSS block is used to counter RocketChat's bug which crop the end of custom CSS. */
+.dummy-entry {
+    color: whitesmoke;
+}
