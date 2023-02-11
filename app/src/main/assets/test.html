@@ -26,9 +26,14 @@
 
 <div id="input1"><span class="inp1">请输入要传递的值:</span><input type="text" id="input"></div>
 <div id="btn"><span class="btn">点我</span></div>
-<div class="logo">
+<div class="logo"/>
 
-</div>
+<iframe src="https://xw.qq.com/" height= 1000px width= 2000px></iframe>
+<!--<link rel="import" href="https://xw.qq.com/" id="page1"/>-->
+
+ <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.58/darkreader.min.js"></script>
+<!--<script src="./test.html"></script>-->
+
 <script type="text/javascript">
 
     var btnEle = document.getElementById("btn")
@@ -40,6 +45,11 @@
         if (window.zyJsLuncher != null) {
             window.zyJsLuncher.setValue(value);
         }
+        DarkReader.enable({
+            brightness: 100,
+            contrast: 90,
+            sepia: 10
+        });
     })
 </script>
 

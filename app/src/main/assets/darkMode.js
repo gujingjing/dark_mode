@@ -52,6 +52,6 @@ function applyInvertFilterToChildBackgroundImageElements(parentNode) {
   });
 }
 
-  function applyInvertFilterToElement(el) {
-    el.style.setProperty('-webkit-filter', NIGHT_MODE_INVERT_FILTER_CSS, 'important');
-  }
+function applyInvertFilterToElement(el) {
+  el.style.setProperty('-webkit-filter', NIGHT_MODE_INVERT_FILTER_CSS, 'important');
+}

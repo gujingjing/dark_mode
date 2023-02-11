@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             webView.evaluateJavascript("javascript:"+edge_dark_mode, null);
         });
         findViewById(R.id.callJs).setOnClickListener(view -> {
-            webView.evaluateJavascript("javascript:window.NightMode.setEnabled(true)", null);
+//            webView.evaluateJavascript("javascript:window.NightMode.setEnabled(true)", null);
         });
         initWebView();
     }
