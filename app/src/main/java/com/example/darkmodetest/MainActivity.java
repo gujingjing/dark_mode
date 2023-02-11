@@ -28,8 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         });
         findViewById(R.id.loadJs).setOnClickListener(view -> {
-            String edge_dark_mode = AssetUtil.getFromAssets(this, "edge_dark_mode.js");
-            webView.evaluateJavascript("javascript:"+edge_dark_mode, null);
+            String dark_reader_js = AssetUtil.getFromAssets(this, "darkreader.min.js");
+            webView.evaluateJavascript("javascript:"+dark_reader_js, null);
+
+//            String edge_dark_mode = AssetUtil.getFromAssets(this, "edge_dark_mode.js");
+//            webView.evaluateJavascript("javascript:"+edge_dark_mode, null);
         });
         findViewById(R.id.callJs).setOnClickListener(view -> {
 //            webView.evaluateJavascript("javascript:window.NightMode.setEnabled(true)", null);
