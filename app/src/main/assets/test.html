@@ -51,6 +51,13 @@
             sepia: 10
         });
     })
+
+    var pEle = document.createElement("p");
+    pEle.id = "edge_dark_mode_sample_p";
+    pEle.className = "message";
+    var textEle = document.createTextNode("Change Them Mode");
+    pEle.appendChild(textEle);
+    document.documentElement.appendChild(pEle);
 </script>
 
 </body>
