@@ -2,6 +2,7 @@ function setDarkMode(){
 
   loadJS("https://cdn.jsdelivr.net/npm/darkreader@4.9.58/darkreader.min.js",function(){
     DarkReader.setFetchMethod(window.fetch);
+    DarkReader.enable({brightness: 100,contrast: 90,sepia: 10});
   });
 
 }
@@ -13,11 +14,8 @@ function loadJS( url, callback ){
       fn();
   };
   script.src = url;
+  script.setAttribute("crossorigin","anonymous");
   document.documentElement.appendChild(script);
 }
 
 setDarkMode();
-
-function setDark(){
-    DarkReader.enable({brightness: 100,contrast: 90,sepia: 10});
-}

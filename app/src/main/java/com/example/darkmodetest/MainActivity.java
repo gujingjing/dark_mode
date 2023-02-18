@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         });
         findViewById(R.id.loadJs).setOnClickListener(view -> {
-            String dark_reader_js = AssetUtil.getFromAssets(this, "darkreader.js");
-//            webView.evaluateJavascript("javascript:"+dark_reader_js, null);
-            webView.evaluateJavascript("javascript:setDark()", null);
+            String dark_reader_js = AssetUtil.getFromAssets(this, "darkreader.min.js");
+            webView.evaluateJavascript("javascript:"+dark_reader_js, null);
+//            webView.evaluateJavascript("javascript:setDark()", null);
 
 //            String edge_dark_mode = AssetUtil.getFromAssets(this, "edge_dark_mode.js");
 //            webView.evaluateJavascript("javascript:"+edge_dark_mode, null);
@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
      * webView.loadUrl("content://com.android.htmlfileprovider/sdcard/test.html");
      */
     private void initWebView(){
-        String loadUrl="https://www.bing.com/";
+//        String loadUrl="https://www.bing.com/";
+        String loadUrl="https://tieba.baidu.com/index.html";
 //        String loadUrl="file:///android_asset/test.html";
         webView.addJavascriptInterface(new JSRelation(this), "android");
         WebSettings settings = webView.getSettings();
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 String dark_reader_js = AssetUtil.getFromAssets(MainActivity.this, "darkreader.min.js");
+//                String dark_reader_js = AssetUtil.getFromAssets(MainActivity.this, "edge_dark_mode.js");
                 webView.evaluateJavascript("javascript:"+dark_reader_js, null);
             }
         });
