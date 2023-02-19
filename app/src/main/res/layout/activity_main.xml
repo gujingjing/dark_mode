@@ -27,7 +27,7 @@
 
         <Button
             android:id="@+id/callJs"
-            android:text="call js"
+            android:text="go back"
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
