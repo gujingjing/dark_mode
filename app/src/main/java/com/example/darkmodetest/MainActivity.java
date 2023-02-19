@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private void initWebView(){
 //        String loadUrl="https://www.tianya.cn/m/";
-        String loadUrl="https://www.bing.com/";
-//        String loadUrl="https://tieba.baidu.com/index.html";
+//        String loadUrl="https://www.bing.com/";
+        String loadUrl="https://tieba.baidu.com/index.html";
 //        String loadUrl="file:///android_asset/test.html";
         webView.addJavascriptInterface(new JSRelation(this), "android");
         WebSettings settings = webView.getSettings();

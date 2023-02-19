@@ -1,6 +1,7 @@
 package com.example.darkmodetest;
 
 import android.content.Context;
+import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ public class JSRelation {
             }
             return sb.toString();
         }catch (Exception e){
+            Log.e("TAG","gjj-fetch error:"+ e);
             e.printStackTrace();
         }
         return null;
